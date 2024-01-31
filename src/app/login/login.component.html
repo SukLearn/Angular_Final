@@ -1,0 +1,44 @@
+<h1>login page</h1>
+<form class="form" [formGroup]="loginForm" (ngSubmit)="Submit()">
+  <div class="inputBox">
+    <input
+      type="text"
+      name="username"
+      id="username"
+      formControlName="username"
+      required
+    />
+    <i>username</i>
+    <small
+      *ngIf="
+        loginForm.get('username')?.invalid && loginForm.get('username')?.touched
+      "
+    >
+      *You must fill Username field</small
+    >
+  </div>
+
+  <div class="inputBox">
+    <input type="password" formControlName="password" required />
+    <i>Password</i>
+    <small
+      *ngIf="
+        loginForm.get('password')?.invalid && loginForm.get('password')?.touched
+      "
+    >
+      *You must fill these field</small
+    >
+  </div>
+
+  <div class="links">
+    <a href="#">Forgot Password</a>
+    <a routerLink="/registration">Signup</a>
+  </div>
+
+  <div class="inputBox login-button">
+    <input type="submit" value="Login" [disabled]="loginForm.invalid" />
+  </div>
+</form>
+<button type="button" class="btn btn-secondary" (click)="goToRegister()">
+  Register
+</button>

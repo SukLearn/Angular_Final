@@ -1,0 +1,36 @@
+<h1>Register page</h1>
+
+<form class="form" [formGroup]="register" (ngSubmit)="Submitted()">
+  <div class="input-group mb-3">
+    <input type="text" required formControlName="username" />
+    <i>First Name</i>
+    <small
+      *ngIf="
+        register.get('username')?.invalid && register.get('username')?.touched
+      "
+      >*Username is a required field</small
+    >
+  </div>
+  <div class="input-group mb-3">
+    <input type="password" required formControlName="password" />
+    <i>Password</i>
+    <small
+      *ngIf="
+        register.get('password')?.invalid && register.get('password')?.touched
+      "
+      >*Password is a required field</small
+    >
+  </div>
+
+  <div class="">
+    <a class="" href="#">Forgot Password</a>
+    <a routerLink="/login">Sign in</a>
+  </div>
+
+  <div class="inputBox">
+    <input [disabled]="register.invalid" type="submit" value="Register" />
+  </div>
+</form>
+<button type="button" class="btn btn-secondary" (click)="goToLogin()">
+  Login
+</button>
